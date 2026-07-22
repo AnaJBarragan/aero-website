@@ -2,21 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import PartnerForm from '../components/PartnerForm';
 ---
 
-<Layout title="Become Our Partner — uOAeronautics">
+<Layout title="Sponsor Us — uOAeronautics">
 	<NavBar active="" />
 
 	<section class="mx-auto max-w-[1240px] px-6 pb-6 pt-16 md:px-10">
 		<h6 class="text-accent">Partnerships</h6>
-		<h1 class="mb-4 max-w-[24ch]">Become our partner</h1>
+		<h1 class="mb-4 max-w-[24ch]">Sponsor Us</h1>
 		<p class="mb-2.5 max-w-[66ch] text-[17px] text-ink/60">
-			uOAeronautics designs, builds and flies a competition aircraft every year — work made
-			possible by the organizations that back our team. Partnering with us puts your brand in
-			front of the next generation of aerospace engineers and supports hands-on technical
-			education at the University of Ottawa.
+			Want to support us and get some visibility in return? uOAeronautics designs, builds and flies
+			a competition aircraft every year — work made possible by the organizations that back our
+			team. Partnering with us puts your brand in front of the next generation of aerospace
+			engineers at the University of Ottawa.
 		</p>
 		<p class="m-0 text-base font-bold">
 			<a href="mailto:aeronautics@uottawa.ca">aeronautics@uottawa.ca</a>
@@ -26,7 +25,7 @@ import PartnerForm from '../components/PartnerForm';
 	<section class="mx-auto max-w-[1240px] px-6 pb-20 pt-2 md:px-10">
 		<div class="grid grid-cols-1 items-start gap-14 md:grid-cols-[0.9fr_1.1fr]">
 			<div class="grayscale">
-				<ImagePlaceholder label="Aircraft or workshop photo" class="aspect-4/5 w-full" />
+				<img src="/images/site/logo-on-abstract-plane.webp" alt="uOAeronautics logo" class="aspect-4/5 w-full object-cover" />
 			</div>
 			<PartnerForm client:load />
 		</div>

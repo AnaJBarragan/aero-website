@@ -2,55 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
 const categories = [
 	{
 		tag: 'ADVANCED',
 		title: 'Advanced Class',
-		copy: 'The most technically demanding class, open to teams of any experience level, with the highest payload and performance targets.',
-		focus: 'Payload capacity · structural efficiency',
-	},
-	{
-		tag: 'REGULAR',
-		title: 'Regular Class',
-		copy: 'A balanced class for teams building foundational design and manufacturing experience with moderate mission complexity.',
-		focus: 'Payload-to-weight ratio',
+		copy: 'An autonomous aircraft that must deliver and pick up a payload, landing and taking off horizontally, within a limit of roughly 1.5 kg (payload included) and a maximum of 3 rotors. Requires a systems approach across aeronautical, mechanical, electrical and computer engineering.',
+		focus: 'Autonomous flight · systems integration',
 	},
 	{
 		tag: 'MICRO',
 		title: 'Micro Class',
-		copy: 'The smallest airframes on the field, judged on compact, efficient design within tight size and weight limits.',
-		focus: 'Size & weight constraints',
+		copy: 'An aircraft that can take off in the shortest distance possible, within a small wingspan and a 500 W power limit, while carrying a water payload — with incentives for carrying more.',
+		focus: 'Payload fraction · minimum empty weight',
 	},
 ];
 
-const criteria = [
-	{
-		name: 'Technical Design Report',
-		desc: 'A written report documenting the design process, analysis and testing behind the aircraft.',
-		weight: 'High',
-	},
-	{
-		name: 'Oral Presentation',
-		desc: 'A design review presented live to a panel of industry and academic judges.',
-		weight: 'Medium',
-	},
-	{
-		name: 'Ground / Technical Inspection',
-		desc: 'Verifies the aircraft meets structural, electrical and safety requirements before flight.',
-		weight: 'Pass / fail',
-	},
-	{
-		name: 'Flight Mission Score',
-		desc: 'Scored flights measuring payload carried, mission time and reliability against the class formula.',
-		weight: 'High',
-	},
-	{
-		name: 'Payload Efficiency',
-		desc: 'Ratio of payload delivered to aircraft empty weight — rewards lean, purposeful design.',
-		weight: 'Medium',
-	},
+const pastDesigns = [
+	{ title: 'Advanced — 2026', name: 'Starling', href: '/aircraft', img: '/images/site/adv-2026-render-front.webp' },
+	{ title: 'Micro — 2026', name: 'SG32C', href: '/aircraft', img: '/images/site/micro-2026-sitting-on-snow.webp' },
+	{ title: 'Micro — 2025', name: 'UOAN-M25', href: '/aircraft', img: '/images/site/micro-on-the-concrete.webp' },
+	{ title: 'Advanced — 2025', name: 'Longshot', href: '/aircraft', img: '/images/site/adv-gala.webp' },
 ];
 ---
 
@@ -59,7 +31,7 @@ const criteria = [
 
 	<section class="relative flex min-h-[300px] items-center overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<ImagePlaceholder label="Drop competition flight-line photo" class="h-full w-full" />
+			<img src="/images/site/comp-2025-teams.webp" alt="Many different Canadian teams attend the competitions" class="h-full w-full object-cover" />
 		</div>
 		<div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(32,30,29,.9), rgba(32,30,29,.5))">
 		</div>
@@ -72,21 +44,31 @@ const criteria = [
 
 	<section class="mx-auto max-w-[1240px] px-6 pb-4 pt-16 md:px-10">
 		<h6 class="text-accent">Overview</h6>
-		<h2 class="mb-4 max-w-[26ch]">A season-long design, build and fly challenge</h2>
+		<h2 class="mb-4 max-w-[30ch]">A competitive team, head-to-head with other universities</h2>
 		<p class="max-w-[72ch] text-[17px] text-ink/80">
-			SAE Aero Design is an international collegiate competition where student teams design, build
-			and fly a radio-controlled aircraft to a strict set of mission rules published each year.
-			Teams are scored across three pillars: a written technical design report, an oral design
-			presentation to a panel of industry judges, and flight performance measured against each
-			class's scoring formula. It rewards the same engineering discipline used in industry: a
-			documented design process, thorough analysis, and a machine that actually performs on the
-			day.
+			The uOttawa Aerospace Team is a competitive team — every year we aim to compete head-to-head
+			with other universities' aircraft. Both our Micro Class and Advanced Class teams attended the
+			SAE Aero Design Competition East in Dallas, Texas in May 2025. While the focus of SAE Aero
+			Design is to design an original aircraft that best meets the mission requirements, attending
+			competition is also a great way to validate our own design, gain inspiration from other
+			teams' work, and build connections across industry and academia.
+		</p>
+		<p class="max-w-[72ch] text-[17px] text-ink/80">
+			As <a href="https://www.sae.org/attend/student-events/about-aero-design" class="text-accent">described by SAE</a>,
+			the competition is intended to give engineering students a real-life design challenge —
+			performing trade studies and compromises to arrive at a solution that optimally meets the
+			mission requirements within the configuration limits.
 		</p>
 	</section>
 
 	<section class="mx-auto max-w-[1240px] px-6 pb-16 pt-4 md:px-10">
 		<h6 class="text-accent">Categories</h6>
-		<h2 class="mb-7">The three competition classes</h2>
+		<h2 class="mb-7">The two classes we compete in</h2>
+		<p class="mb-7 max-w-[72ch] text-[15px] text-ink/60">
+			Students choose, based on their abilities and interests, one of our two subteams. Subteams
+			aren't strictly isolated — members can work on whichever tasks suit them best, so students
+			from a variety of backgrounds can find their own role on the team.
+		</p>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6">
 			{
 				categories.map((c) => (
@@ -102,32 +84,19 @@ const criteria = [
 	</section>
 
 	<section class="mx-auto max-w-[1240px] px-6 pb-18 pt-4 md:px-10">
-		<h6 class="text-accent">Judging Breakdown</h6>
-		<h2 class="mb-6">Key criteria per category</h2>
-		<div class="overflow-x-auto">
-			<table class="table-modernist">
-				<thead>
-					<tr>
-						<th>Criteria</th>
-						<th>What it measures</th>
-						<th>Typical weight</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						criteria.map((row) => (
-							<tr>
-								<td class="font-heading font-bold">
-									<span class="mr-2 inline-block h-2 w-2 align-middle bg-accent" />
-									{row.name}
-								</td>
-								<td>{row.desc}</td>
-								<td>{row.weight}</td>
-							</tr>
-						))
-					}
-				</tbody>
-			</table>
+		<h6 class="text-accent">Our Past Designs</h6>
+		<h2 class="mb-7">Browse each year's aircraft</h2>
+		<div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6">
+			{
+				pastDesigns.map((d) => (
+					<div class="card gap-3 p-5 shadow-sm">
+						<img src={d.img} alt={`${d.title} — ${d.name}`} class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+						<h3 class="m-0 text-lg">{d.title}</h3>
+						<p class="m-0 text-sm text-ink/60">{d.name}</p>
+						<a href={d.href} class="btn btn-secondary">Learn More</a>
+					</div>
+				))
+			}
 		</div>
 	</section>
 

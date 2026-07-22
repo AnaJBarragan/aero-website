@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ImagePlaceholderReact from './ImagePlaceholderReact';
 
 interface Stat {
 	label: string;
@@ -10,6 +9,7 @@ interface Aircraft {
 	name: string;
 	category: string;
 	desc: string;
+	img: string;
 	stats: Stat[];
 }
 
@@ -21,85 +21,61 @@ interface YearGroup {
 
 const years: YearGroup[] = [
 	{
-		key: '2026-2027',
-		label: '2026–2027',
+		key: '2026',
+		label: '2026',
 		aircraft: [
 			{
-				name: 'Talon III',
+				name: 'Starling',
 				category: 'Advanced Class',
-				desc: "In development: targeting a further weight reduction and a new high-lift wing for next season's mission.",
+				desc: 'A hybrid fixed-wing platform with vertical takeoff capability for autonomous aerial missions — the next iteration of our previous platform, Project Longshot. Starling uses a fixed-wing tilt-rotor tri-copter configuration for stable forward flight with controlled VTOL transitions.',
+				img: '/images/site/adv-2026-render-front.webp',
 				stats: [
-					{ label: 'Target Wingspan', value: '2.5 m' },
-					{ label: 'Target Empty Weight', value: '3.5 kg' },
-					{ label: 'Target Payload', value: '8.0 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
+					{ label: 'Configuration', value: 'Tilt-rotor tri-copter VTOL' },
+					{ label: 'Structure', value: '3D-printed skin, wood fuselage' },
+					{ label: 'Wing', value: 'Fully 3D-printed' },
+					{ label: 'Predecessor', value: 'Project Longshot' },
 				],
 			},
 			{
-				name: 'Kestrel I',
-				category: 'Regular Class',
-				desc: 'Our new Regular Class program: a foundational airframe for building manufacturing and testing experience.',
+				name: 'SG32C',
+				category: 'Micro Class',
+				desc: 'Officially "Sneaky Golem 3.2 Cycle" — a high-lift payload aircraft built around a lightweight twin-boom taildragger configuration, optimized for short takeoff and maximum payload capacity. Placed 6th Overall and 3rd in Technical Presentation at SAE Aero Design East.',
+				img: '/images/site/micro-2026-sitting-on-snow.webp',
 				stats: [
-					{ label: 'Target Wingspan', value: '2.1 m' },
-					{ label: 'Target Empty Weight', value: '3.0 kg' },
-					{ label: 'Target Payload', value: '4.5 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
+					{ label: 'Configuration', value: 'High-wing twin-boom taildragger' },
+					{ label: 'Airfoil', value: 'CH10' },
+					{ label: 'Structure', value: 'Foam, carbon fibre, 3D-printed' },
+					{ label: 'Result', value: '6th overall, SAE Aero Design East' },
 				],
 			},
 		],
 	},
 	{
-		key: '2025-2026',
-		label: '2025–2026',
+		key: '2025',
+		label: '2025',
 		aircraft: [
 			{
-				name: 'Talon II',
+				name: 'Longshot',
 				category: 'Advanced Class',
-				desc: 'A refined successor with a redesigned wing structure and lighter composite fuselage for improved payload efficiency.',
+				desc: 'Designed for autonomous payload delivery and capture via VTOL and conventional flight. Built around a carbon fibre rod and 3D-printed spline frame with a fully 3D-printed wing, powered by three T-Motor MN2806 units with vectored front motors for vertical lift.',
+				img: '/images/site/adv-2025-longshot-glamour.webp',
 				stats: [
-					{ label: 'Wingspan', value: '2.5 m' },
-					{ label: 'Empty Weight', value: '3.8 kg' },
-					{ label: 'Payload Capacity', value: '7.5 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
+					{ label: 'Wingspan', value: '1.2 m' },
+					{ label: 'Length', value: '0.97 m' },
+					{ label: 'Empty Mass', value: '1.5 kg' },
+					{ label: 'Flight Controller', value: 'Pixhawk 6C / ArduPilot' },
 				],
 			},
 			{
-				name: 'Wren II',
+				name: 'UOAN-M25',
 				category: 'Micro Class',
-				desc: 'Second-generation Micro entry with a simplified assembly process and improved control authority.',
+				desc: 'A lightweight, modular platform built for performance and rapid assembly, featuring a cropped delta wing and T-tail layout. The airframe is a carbon fibre skeleton housed in a CNC-machined EPS foam body, powered by an E-flite Power 10 motor.',
+				img: '/images/site/micro-on-the-concrete.webp',
 				stats: [
-					{ label: 'Wingspan', value: '0.85 m' },
-					{ label: 'Empty Weight', value: '0.55 kg' },
-					{ label: 'Payload Capacity', value: '0.45 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
-				],
-			},
-		],
-	},
-	{
-		key: '2024-2025',
-		label: '2024–2025',
-		aircraft: [
-			{
-				name: 'Talon I',
-				category: 'Advanced Class',
-				desc: 'Our first Advanced Class entry: a high-wing monoplane optimized for maximum payload carriage within the mission weight limits.',
-				stats: [
-					{ label: 'Wingspan', value: '2.4 m' },
-					{ label: 'Empty Weight', value: '4.1 kg' },
-					{ label: 'Payload Capacity', value: '6.8 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
-				],
-			},
-			{
-				name: 'Wren I',
-				category: 'Micro Class',
-				desc: 'A compact Micro Class airframe engineered to squeeze maximum performance out of a tight size and weight envelope.',
-				stats: [
-					{ label: 'Wingspan', value: '0.9 m' },
-					{ label: 'Empty Weight', value: '0.6 kg' },
-					{ label: 'Payload Capacity', value: '0.4 kg' },
-					{ label: 'Powerplant', value: 'Electric, single motor' },
+					{ label: 'Wingspan', value: '1.0 m' },
+					{ label: 'Length', value: '1.2 m' },
+					{ label: 'Empty Mass', value: '1.3 kg' },
+					{ label: 'Motor', value: 'E-flite Power 10' },
 				],
 			},
 		],
@@ -137,7 +113,7 @@ export default function AircraftTabs() {
 						className="grid grid-cols-1 items-start gap-10 border-t-2 border-divider py-9 md:grid-cols-2"
 					>
 						<div className="grayscale">
-							<ImagePlaceholderReact label={`${a.name} photo`} className="aspect-4/3 w-full" />
+							<img src={a.img} alt={`${a.name} photo`} className="aspect-4/3 w-full object-cover" />
 						</div>
 						<div>
 							<span className="tag tag-accent">{a.category}</span>

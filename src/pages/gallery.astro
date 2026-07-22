@@ -1,25 +1,56 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
-const collage = Array.from({ length: 6 }, () => ({ label: 'Photo' }));
-const highlights = Array.from({ length: 4 }, () => ({ label: 'Highlight photo' }));
+function toCaption(filename: string) {
+	const base = filename.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
+	return base.charAt(0).toUpperCase() + base.slice(1);
+}
+
+function loadAlbum(dir: string, urlBase: string) {
+	const full = path.resolve('public/images', dir);
+	return fs
+		.readdirSync(full)
+		.sort()
+		.map((file) => ({ src: `${urlBase}/${file}`, caption: toCaption(file) }));
+}
 
 const albumDefs = [
-	{ name: 'SAE Aero Design East 2025 Competition', count: 6 },
-	{ name: 'Testing', count: 6 },
-	{ name: 'Construction', count: 6 },
-	{ name: 'Design', count: 6 },
-	{ name: 'Our Workshop', count: 6 },
+	{ name: 'Starling — Advanced Class 2026', dir: 'aircraft/2026-advanced', urlBase: '/images/aircraft/2026-advanced' },
+	{ name: 'SG32C — Micro Class 2026', dir: 'aircraft/2026-micro', urlBase: '/images/aircraft/2026-micro' },
+	{ name: 'Longshot — Advanced Class 2025', dir: 'aircraft/2025-advanced', urlBase: '/images/aircraft/2025-advanced' },
+	{ name: 'UOAN-M25 — Micro Class 2025', dir: 'aircraft/2025-micro', urlBase: '/images/aircraft/2025-micro' },
+	{ name: 'Introductory Meeting & Micro Test Flight', dir: 'gallery/2025-09-26', urlBase: '/images/gallery/2025-09-26' },
+	{ name: 'Recruitment — Club Fair', dir: 'gallery/2025-09-02', urlBase: '/images/gallery/2025-09-02' },
+	{ name: 'Recruitment — New Semester', dir: 'gallery/2025-09-01', urlBase: '/images/gallery/2025-09-01' },
+	{ name: 'More Flight Tests', dir: 'gallery/2025-07-27', urlBase: '/images/gallery/2025-07-27' },
+	{ name: 'First Flight Test After Competition', dir: 'gallery/2025-07-21', urlBase: '/images/gallery/2025-07-21' },
 ];
 
 const albums = albumDefs.map((a, i) => ({
 	...a,
 	bg: i % 2 === 0 ? 'bg-bg' : 'bg-surface',
-	photos: Array.from({ length: a.count }, () => ({ label: `${a.name} photo` })),
+	photos: loadAlbum(a.dir, a.urlBase),
 }));
+
+const collage = [
+	'/images/aircraft/2026-advanced/starling-on-a-stand-at-the-test-field.jpg',
+	'/images/aircraft/2026-micro/sg32c-ready-for-takeoff.jpg',
+	'/images/aircraft/2025-advanced/the-aircraft-having-just-taken-off.jpg',
+	'/images/aircraft/2025-micro/the-aircraft-ready-to-fly-on-the-competition-tarmac.jpg',
+	'/images/gallery/2025-09-26/the-plane-in-flight-as-seen-from-the-side.jpg',
+	'/images/gallery/2025-07-27/the-sea-duck-flying-close-to-the-ground.jpg',
+];
+
+const highlights = [
+	{ src: '/images/aircraft/2026-micro/kaden-being-happy-with-the-current-state-of-sg32c.jpg', caption: 'Kaden with SG32C' },
+	{ src: '/images/aircraft/2026-advanced/testing-the-vtol-functionality-of-starling.jpg', caption: 'Testing Starling\'s VTOL functionality' },
+	{ src: '/images/site/adv-2025-longshot-glamour.webp', caption: 'Project Longshot' },
+	{ src: '/images/aircraft/2026-micro/showing-off-the-lightweight-carbon-fiber-propellors.jpg', caption: 'Carbon fibre propellers' },
+];
 ---
 
 <Layout title="Gallery — uOAeronautics">
@@ -27,7 +58,7 @@ const albums = albumDefs.map((a, i) => ({
 
 	<section class="relative flex min-h-[340px] items-center overflow-hidden">
 		<div class="absolute inset-0 grid grid-cols-6 grid-rows-2 grayscale">
-			{collage.map((c) => <ImagePlaceholder label={c.label} class="h-full w-full" />)}
+			{collage.map((src) => <img src={src} alt="" class="h-full w-full object-cover" />)}
 		</div>
 		<div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(32,30,29,.92), rgba(32,30,29,.55))">
 		</div>
@@ -51,7 +82,7 @@ const albums = albumDefs.map((a, i) => ({
 			{
 				highlights.map((h) => (
 					<div class="grayscale">
-						<ImagePlaceholder label={h.label} class="aspect-square w-full" />
+						<img src={h.src} alt={h.caption} class="aspect-square w-full object-cover" />
 					</div>
 				))
 			}
@@ -64,12 +95,12 @@ const albums = albumDefs.map((a, i) => ({
 				<div class="mx-auto max-w-[1240px]">
 					<div class="mb-4.5 flex flex-wrap items-baseline justify-between gap-4">
 						<h2 class="m-0">{album.name}</h2>
-						<span class="tag tag-outline">{album.count} photos</span>
+						<span class="tag tag-outline">{album.photos.length} photos</span>
 					</div>
 					<div class="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
 						{album.photos.map((p) => (
 							<div class="grayscale">
-								<ImagePlaceholder label={p.label} class="aspect-4/3 w-full" />
+								<img src={p.src} alt={p.caption} title={p.caption} class="aspect-4/3 w-full object-cover" />
 							</div>
 						))}
 					</div>

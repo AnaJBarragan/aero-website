@@ -2,22 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
-
-const values = [
-	{
-		title: 'Engineered to Fly',
-		copy: 'Every rivet, spar and control surface is justified by analysis and test, not guesswork.',
-	},
-	{
-		title: 'Built by Students',
-		copy: 'From freshmen to grad students, every subteam is run and staffed entirely by uOttawa students.',
-	},
-	{
-		title: 'Grounded in Rigor',
-		copy: 'Data-driven iteration from CAD model to wind tunnel to the competition tarmac.',
-	},
-];
 
 const process = [
 	{
@@ -28,14 +12,14 @@ const process = [
 	{
 		num: '02',
 		title: 'Build',
-		copy: 'Our manufacturing team fabricates airframes, composite parts and electronics entirely in-house.',
+		copy: 'Our team fabricates airframes, composite and 3D-printed parts and electronics in our JMTS workshop.',
 	},
 	{
 		num: '03',
 		title: 'Test',
-		copy: 'Ground testing, structural proofing and instrumented flight tests validate every design decision.',
+		copy: 'Ground testing and instrumented flight tests validate every design decision before competition.',
 	},
-	{ num: '04', title: 'Fly', copy: 'We fly at SAE Aero Design and at local test flights throughout the year.' },
+	{ num: '04', title: 'Fly', copy: 'We fly at SAE Aero Design East and at local test flights throughout the year.' },
 ];
 ---
 
@@ -44,7 +28,7 @@ const process = [
 
 	<section class="relative flex min-h-[320px] items-center overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<ImagePlaceholder label="Drop workshop/team photo" class="h-full w-full" />
+			<img src="/images/site/wide-workshop.webp" alt="Our workshop" class="h-full w-full object-cover" />
 		</div>
 		<div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(32,30,29,.9), rgba(32,30,29,.5))">
 		</div>
@@ -56,38 +40,41 @@ const process = [
 	</section>
 
 	<section class="mx-auto max-w-[1240px] px-6 py-18 md:px-10">
-		<h6 class="text-accent">Who We Are</h6>
-		<h2 class="mb-5 max-w-[20ch]">A student team engineering flight from the ground up</h2>
+		<h6 class="text-accent">Our Mission</h6>
+		<h2 class="mb-5 max-w-[24ch]">We give real world, practical experience to uOttawa students</h2>
 		<p class="max-w-[70ch] text-[17px] text-ink/80">
-			uOAeronautics is the University of Ottawa's student-run aircraft design team, founded by a
-			small group of engineering students who wanted to take flight theory out of the classroom
-			and into a hangar. What started as a handful of students sketching wing profiles between
-			classes has grown into a full multidisciplinary program spanning aerodynamics, structures,
-			propulsion, avionics and manufacturing. Our goal is simple: give uOttawa students the chance
-			to design, build, test and fly a real aircraft every year, and to represent the university at
-			SAE Aero Design with a competitive, reliable airframe.
+			uOAeronautics is a University of Ottawa JMTS (John McEntyre Team Space) team that designs,
+			builds and flies RC aircraft for the <a href="https://www.saeaerodesign.com/" class="text-accent">SAE Aero Design</a>
+			competition. Students choose, based on their abilities and interests, one of our two
+			subteams — Micro or Advanced — and work across disciplines including aerodynamics,
+			structures, propulsion, avionics and manufacturing to bring a competition aircraft from CAD
+			model to the flight line.
 		</p>
 
 		<div class="my-10 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
-			{
-				values.map((v) => (
-					<div class="border-t-[3px] border-accent pt-4">
-						<h3 class="mb-2">{v.title}</h3>
-						<p class="m-0 text-sm text-ink/60">{v.copy}</p>
-					</div>
-				))
-			}
+			<div class="border-t-[3px] border-accent pt-4">
+				<h3 class="mb-2">Engineered to Fly</h3>
+				<p class="m-0 text-sm text-ink/60">Every design decision is validated through analysis, simulation and real flight testing.</p>
+			</div>
+			<div class="border-t-[3px] border-accent pt-4">
+				<h3 class="mb-2">Built by Students</h3>
+				<p class="m-0 text-sm text-ink/60">The team is run and staffed entirely by uOttawa students, across every subteam.</p>
+			</div>
+			<div class="border-t-[3px] border-accent pt-4">
+				<h3 class="mb-2">Two Competing Classes</h3>
+				<p class="m-0 text-sm text-ink/60">We build a Micro Class and an Advanced Class aircraft every year for SAE Aero Design.</p>
+			</div>
 		</div>
 
 		<div class="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.3fr_1fr]">
 			<div class="grayscale">
-				<ImagePlaceholder label="Team group photo" class="aspect-video w-full" />
+				<img src="/images/site/winter-team-photo.webp" alt="Team group photo before a test-flight" class="aspect-video w-full object-cover" />
 			</div>
 			<div>
 				<h3 class="mb-2.5">Meet the people behind the airframe</h3>
 				<p class="mb-5 text-[15px] text-ink/60">
-					Leads and members across every subteam — aerodynamics, structures, propulsion, avionics
-					and manufacturing.
+					Leads and members across every subteam — from the Micro and Advanced aircraft leads to
+					electronics, design and CFD.
 				</p>
 				<a href="/team" class="btn btn-primary">Click here to meet the team &rarr;</a>
 			</div>
@@ -98,12 +85,12 @@ const process = [
 
 	<section class="mx-auto max-w-[1240px] px-6 pb-18 pt-14 md:px-10">
 		<h6 class="text-accent">What We Do</h6>
-		<h2 class="mb-5 max-w-[26ch]">We design, build, test and fly our own aircraft</h2>
+		<h2 class="mb-5 max-w-[30ch]">Design, make and fly remote controlled aircraft to compete at SAE Aero Design</h2>
 		<p class="mb-2 max-w-[70ch] text-[17px] text-ink/80">
-			Each year our team competes in SAE Aero Design, an international collegiate competition that
-			challenges student teams to design and manufacture a radio-controlled aircraft to a strict
-			set of mission requirements. From the first CAD sketch to the final flight line, every part
-			of the aircraft is our own work.
+			Learn about aerodynamics and experiment with airfoils and avionics as you develop two
+			competing prototypes. Optimize lift with our STOL Micro aircraft, or work on autonomous
+			hybrid VTOL/STOL flight with our Advanced aircraft. Every part of both aircraft is our own
+			work, from the first CAD sketch to the final flight line.
 		</p>
 
 		<div class="my-8">

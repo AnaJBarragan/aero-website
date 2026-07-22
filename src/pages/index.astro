@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
 const sections = [
 	{
@@ -12,7 +11,7 @@ const sections = [
 			'Who we are, where we started at the University of Ottawa, and what drives every design decision we make.',
 		cta: 'Meet the mission',
 		href: '/about',
-		img: 'About Us photo',
+		img: '/images/site/wide-workshop.webp',
 	},
 	{
 		num: '02',
@@ -20,7 +19,7 @@ const sections = [
 		blurb: 'The students behind the airframe — leads, members, and the disciplines that keep us flying.',
 		cta: 'Meet the team',
 		href: '/team',
-		img: 'Meet the Team photo',
+		img: '/images/team/ana-j-barragan.webp',
 	},
 	{
 		num: '03',
@@ -28,7 +27,7 @@ const sections = [
 		blurb: 'SAE Aero Design: the categories we fly, and the criteria we are judged on.',
 		cta: 'See the competition',
 		href: '/competition',
-		img: 'Competition photo',
+		img: '/images/site/comp-2025-teams.webp',
 	},
 	{
 		num: '04',
@@ -36,7 +35,7 @@ const sections = [
 		blurb: 'Year over year airframes, stats, and the engineering behind each build.',
 		cta: 'View the aircraft',
 		href: '/aircraft',
-		img: 'Our Aircraft photo',
+		img: '/images/site/adv-2026-render-front.webp',
 	},
 	{
 		num: '05',
@@ -44,7 +43,7 @@ const sections = [
 		blurb: 'Construction, testing, and competition day — in photos.',
 		cta: 'Open the gallery',
 		href: '/gallery',
-		img: 'Gallery photo',
+		img: '/images/aircraft/2026-micro/kaden-being-happy-with-the-current-state-of-sg32c.jpg',
 	},
 	{
 		num: '06',
@@ -52,11 +51,18 @@ const sections = [
 		blurb: 'Want to fly with us? Reach out — we are always recruiting.',
 		cta: 'Get in touch',
 		href: '/contact',
-		img: 'Contact Us photo',
+		img: '/images/site/stem-at-night.webp',
 	},
 ];
 
-const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}` }));
+const sponsors = [
+	{ name: 'DuPont', logo: 'dupont.svg', href: 'https://www.dupont.ca/' },
+	{ name: 'HTS', logo: 'hts.svg', href: 'https://www.hts.com/' },
+	{ name: 'CEED uOttawa', logo: 'ceed.svg', href: 'https://ceed-uottawa.ca/' },
+	{ name: 'Engineering Endowment Fund', logo: 'eef.svg', href: 'https://www.uottawa.ca/faculty-engineering/student-experience/funding-student-initiatives' },
+	{ name: 'Rhystone', logo: 'rhystone.svg', href: 'https://www.rhystone.com/' },
+	{ name: 'T-Motor', logo: 'tmotor.svg', href: 'https://store.tmotor.com/' },
+];
 ---
 
 <Layout>
@@ -64,7 +70,7 @@ const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}
 
 	<section class="relative flex min-h-[620px] items-end overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<ImagePlaceholder label="Drop hero flight photo" class="h-full w-full" />
+			<img src="/images/site/winter-team-photo.webp" alt="Team photo before a test-flight" class="h-full w-full object-cover" />
 		</div>
 		<div
 			class="absolute inset-0"
@@ -78,12 +84,13 @@ const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}
 				Design. Build. Test. Fly.
 			</h1>
 			<p class="mb-7 max-w-[58ch] text-lg text-[#f3f2f2]/90">
-				uOAeronautics is the University of Ottawa's student-run aircraft design team, engineering
-				and flying our own aircraft at SAE Aero Design.
+				uOAeronautics is a uOttawa JMTS team that builds RC aircraft for the SAE Aero Design
+				competition. This year, we are designing and building an aircraft for both the Advanced
+				Class and the Micro Class.
 			</p>
 			<div class="flex flex-wrap gap-3.5">
 				<a href="/team" class="btn btn-primary">Meet the Team</a>
-				<a href="/contact" class="btn btn-secondary" style="border-color:rgba(243,242,242,.55);color:#fff"
+				<a href="https://forms.cloud.microsoft/r/5zeg93ke8z" class="btn btn-secondary" style="border-color:rgba(243,242,242,.55);color:#fff"
 					>Join Us</a
 				>
 			</div>
@@ -100,7 +107,7 @@ const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}
 					]}
 				>
 					<div class="grayscale min-w-[280px] flex-1 basis-[440px]">
-						<ImagePlaceholder label={item.img} class="aspect-4/3 w-full" />
+						<img src={item.img} alt={item.title} class="aspect-4/3 w-full object-cover" />
 					</div>
 					<div class="min-w-[280px] flex-1 basis-[440px]">
 						<div class="mb-0.5 flex items-center gap-2">
@@ -118,6 +125,33 @@ const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}
 		))
 	}
 
+	<section class="mx-auto max-w-[1240px] px-6 pb-14 pt-4 md:px-10">
+		<h6 class="text-accent">Have a Look at What We've Done</h6>
+		<h2 class="mb-7">Our aircraft, year over year</h2>
+		<div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6">
+			<div class="card gap-3 p-5 shadow-sm">
+				<img src="/images/site/adv-2026-render-front.webp" alt="Advanced 2026 — Starling" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<h3 class="m-0 text-lg">Advanced &mdash; 2026</h3>
+				<a href="/competition" class="btn btn-secondary">Learn More</a>
+			</div>
+			<div class="card gap-3 p-5 shadow-sm">
+				<img src="/images/site/micro-2026-sitting-on-snow.webp" alt="Micro 2026 — SG32C" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<h3 class="m-0 text-lg">Micro &mdash; 2026</h3>
+				<a href="/competition" class="btn btn-secondary">Learn More</a>
+			</div>
+			<div class="card gap-3 p-5 shadow-sm">
+				<img src="/images/site/micro-on-the-concrete.webp" alt="Micro 2025 — UOAN-M25" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<h3 class="m-0 text-lg">Micro &mdash; 2025</h3>
+				<a href="/competition" class="btn btn-secondary">Learn More</a>
+			</div>
+			<div class="card gap-3 p-5 shadow-sm">
+				<img src="/images/site/adv-gala.webp" alt="Advanced 2025 — Longshot" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<h3 class="m-0 text-lg">Advanced &mdash; 2025</h3>
+				<a href="/competition" class="btn btn-secondary">Learn More</a>
+			</div>
+		</div>
+	</section>
+
 	<section class="bg-accent-900 px-6 py-16 text-[#f3f2f2] md:px-10">
 		<div class="mx-auto flex max-w-[1240px] flex-wrap items-end justify-between gap-8">
 			<div class="max-w-[56ch]">
@@ -132,10 +166,12 @@ const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}
 				>Want to sponsor us? &rarr;</a
 			>
 		</div>
-		<div class="mx-auto mt-8 flex max-w-[1240px] flex-wrap gap-4">
+		<div class="mx-auto mt-8 flex max-w-[1240px] flex-wrap items-center gap-4">
 			{
 				sponsors.map((s) => (
-					<ImagePlaceholder label={s.label} class="h-[72px] w-[150px]" style="background:rgba(243,242,242,.08)" />
+					<a href={s.href} class="flex h-[64px] w-[144px] items-center justify-center bg-white p-3" title={s.name}>
+						<img src={`/images/sponsors/${s.logo}`} alt={`${s.name} logo`} class="max-h-full max-w-full" />
+					</a>
 				))
 			}
 		</div>
