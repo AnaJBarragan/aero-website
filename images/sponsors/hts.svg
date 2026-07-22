@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="800"
+   height="600"
+   viewBox="0 0 80 60"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><rect
+       x="1110"
+       y="360"
+       width="480"
+       height="190"
+       id="rect4" /></defs><g
+     id="layer1"
+     transform="translate(-90)"><rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.58199"
+       id="rect1-5"
+       width="80"
+       height="60.000004"
+       x="90"
+       y="0"
+       ry="2" /><rect
+       style="fill:#0066a4;fill-opacity:1;stroke:none;stroke-width:1.66602"
+       id="rect5"
+       width="57.269463"
+       height="57.269463"
+       x="101.06063"
+       y="1.0351655"
+       ry="2.082526" /><text
+       xml:space="preserve"
+       transform="matrix(0.20920814,0,0,0.20126424,-122.8303,-50.003845)"
+       id="text4"
+       style="font-weight:bold;font-size:192px;line-height:1;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:16"><tspan
+         x="1110"
+         y="508.224"
+         id="tspan2"><tspan
+           style="font-weight:900;font-size:96px;font-family:'Adwaita Sans';-inkscape-font-specification:'Adwaita Sans Heavy'"
+           id="tspan1">HTS</tspan></tspan></text><path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.70524;stroke-dasharray:none;stroke-opacity:1"
+       d="m 96.895581,3.6383226 c 0,0 8.330099,7.2888404 29.155359,6.2475774 20.82526,-1.0412625 33.32042,-9.37136641 33.32042,-9.37136641"
+       id="path5" /><path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.27944;stroke-dasharray:none;stroke-opacity:1"
+       d="m 92.730529,21.339793 c 0,0 23.949041,11.453893 41.650511,1.041263 16.05498,-9.4441 24.99032,-21.86652241 24.99032,-21.86652241"
+       id="path6" /><path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.58718;stroke-dasharray:none;stroke-opacity:1"
+       d="m 95.854318,52.577683 c 0,0 9.371362,-18.742734 27.072832,-32.279153 C 140.62862,6.7621116 159.37136,0.51453359 159.37136,0.51453359"
+       id="path7" /></g></svg>
