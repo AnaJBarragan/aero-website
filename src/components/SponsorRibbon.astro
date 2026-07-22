@@ -1,0 +1,29 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}` }));
+---
+
+<footer class="border-t-[3px] border-accent bg-surface px-6 pb-7 pt-9 md:px-10">
+	<div class="mx-auto max-w-[1240px]">
+		<div class="mb-4.5 flex flex-wrap items-baseline justify-between gap-4">
+			<h6 class="m-0 text-accent-700">Our Partners</h6>
+			<a href="/partner" class="text-sm font-semibold text-accent no-underline hover:underline"
+				>Want to sponsor us? &rarr;</a
+			>
+		</div>
+		<div class="flex flex-wrap gap-4">
+			{
+				sponsors.map((s) => (
+					<ImagePlaceholder label={s.label} class="h-[72px] w-[150px] bg-neutral-200" />
+				))
+			}
+		</div>
+		<div
+			class="mt-6 flex flex-wrap justify-between gap-2 border-t border-divider pt-4 text-xs text-neutral-600"
+		>
+			<p class="m-0">&copy; University of Ottawa Aeronautics Team</p>
+			<p class="m-0">aeronautics@uottawa.ca</p>
+		</div>
+	</div>
+</footer>

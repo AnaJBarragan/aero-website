@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import SponsorRibbon from '../components/SponsorRibbon.astro';
+import AircraftTabs from '../components/AircraftTabs';
+---
+
+<Layout title="Aircraft — uOAeronautics">
+	<NavBar active="aircraft" />
+
+	<section class="mx-auto max-w-[1240px] px-6 pb-18 pt-14 md:px-10">
+		<h6 class="text-accent">Our Aircraft</h6>
+		<h1 class="mb-3 max-w-[24ch]">One airframe per year, built from scratch</h1>
+		<p class="mb-7 max-w-[64ch] text-base text-ink/60">Browse each school year's builds by competition class.</p>
+		<AircraftTabs client:load />
+	</section>
+
+	<SponsorRibbon />
+</Layout>

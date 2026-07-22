@@ -1,11 +1,145 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import SponsorRibbon from '../components/SponsorRibbon.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const sections = [
+	{
+		num: '01',
+		title: 'About Us',
+		blurb:
+			'Who we are, where we started at the University of Ottawa, and what drives every design decision we make.',
+		cta: 'Meet the mission',
+		href: '/about',
+		img: 'About Us photo',
+	},
+	{
+		num: '02',
+		title: 'Meet the Team',
+		blurb: 'The students behind the airframe — leads, members, and the disciplines that keep us flying.',
+		cta: 'Meet the team',
+		href: '/team',
+		img: 'Meet the Team photo',
+	},
+	{
+		num: '03',
+		title: 'Competition',
+		blurb: 'SAE Aero Design: the categories we fly, and the criteria we are judged on.',
+		cta: 'See the competition',
+		href: '/competition',
+		img: 'Competition photo',
+	},
+	{
+		num: '04',
+		title: 'Our Aircraft',
+		blurb: 'Year over year airframes, stats, and the engineering behind each build.',
+		cta: 'View the aircraft',
+		href: '/aircraft',
+		img: 'Our Aircraft photo',
+	},
+	{
+		num: '05',
+		title: 'Gallery',
+		blurb: 'Construction, testing, and competition day — in photos.',
+		cta: 'Open the gallery',
+		href: '/gallery',
+		img: 'Gallery photo',
+	},
+	{
+		num: '06',
+		title: 'Contact Us',
+		blurb: 'Want to fly with us? Reach out — we are always recruiting.',
+		cta: 'Get in touch',
+		href: '/contact',
+		img: 'Contact Us photo',
+	},
+];
+
+const sponsors = Array.from({ length: 6 }, (_, i) => ({ label: `Sponsor ${i + 1}` }));
 ---
 
 <Layout>
-	<Welcome />
+	<NavBar active="home" />
+
+	<section class="relative flex min-h-[620px] items-end overflow-hidden">
+		<div class="absolute inset-0 grayscale">
+			<ImagePlaceholder label="Drop hero flight photo" class="h-full w-full" />
+		</div>
+		<div
+			class="absolute inset-0"
+			style="background:linear-gradient(180deg, rgba(32,30,29,.1), rgba(32,30,29,.88)), linear-gradient(100deg, rgba(78,15,10,.55), transparent 60%)"
+		>
+		</div>
+		<div class="absolute right-5 top-5 z-10 h-4 w-4 bg-accent"></div>
+		<div class="relative mx-auto w-full max-w-[1240px] px-6 pb-14 pt-18 text-[#f3f2f2] md:px-10">
+			<h6 class="mb-3 text-accent-300">University of Ottawa</h6>
+			<h1 class="mb-4.5 max-w-[16ch] text-[40px] leading-tight text-white sm:text-6xl lg:text-[76px]">
+				Design. Build. Test. Fly.
+			</h1>
+			<p class="mb-7 max-w-[58ch] text-lg text-[#f3f2f2]/90">
+				uOAeronautics is the University of Ottawa's student-run aircraft design team, engineering
+				and flying our own aircraft at SAE Aero Design.
+			</p>
+			<div class="flex flex-wrap gap-3.5">
+				<a href="/team" class="btn btn-primary">Meet the Team</a>
+				<a href="/contact" class="btn btn-secondary" style="border-color:rgba(243,242,242,.55);color:#fff"
+					>Join Us</a
+				>
+			</div>
+		</div>
+	</section>
+
+	{
+		sections.map((item, i) => (
+			<section class:list={['px-6 py-18 md:px-10', i % 2 === 0 ? 'bg-bg' : 'bg-surface']}>
+				<div
+					class:list={[
+						'mx-auto flex max-w-[1240px] flex-wrap items-center gap-14',
+						i % 2 === 0 ? 'flex-row' : 'flex-row-reverse',
+					]}
+				>
+					<div class="grayscale min-w-[280px] flex-1 basis-[440px]">
+						<ImagePlaceholder label={item.img} class="aspect-4/3 w-full" />
+					</div>
+					<div class="min-w-[280px] flex-1 basis-[440px]">
+						<div class="mb-0.5 flex items-center gap-2">
+							<span class="h-2.5 w-2.5 flex-none bg-accent" />
+							<h6 class="m-0 text-accent">{item.num}</h6>
+						</div>
+						<h2 class="mb-3.5">{item.title}</h2>
+						<p class="mb-6 max-w-[52ch] text-base text-ink/60">{item.blurb}</p>
+						<a href={item.href} class="btn btn-primary">
+							{item.cta} &rarr;
+						</a>
+					</div>
+				</div>
+			</section>
+		))
+	}
+
+	<section class="bg-accent-900 px-6 py-16 text-[#f3f2f2] md:px-10">
+		<div class="mx-auto flex max-w-[1240px] flex-wrap items-end justify-between gap-8">
+			<div class="max-w-[56ch]">
+				<h6 class="text-accent-300">Our Partners</h6>
+				<h2 class="mb-3 text-white">Built with the support of our sponsors</h2>
+				<p class="m-0 text-base text-[#f3f2f2]/80">
+					Every airframe we fly is made possible by the companies and organizations who back our
+					team. Interested in partnering with us?
+				</p>
+			</div>
+			<a href="/partner" class="btn btn-secondary flex-none" style="border-color:rgba(243,242,242,.55);color:#fff"
+				>Want to sponsor us? &rarr;</a
+			>
+		</div>
+		<div class="mx-auto mt-8 flex max-w-[1240px] flex-wrap gap-4">
+			{
+				sponsors.map((s) => (
+					<ImagePlaceholder label={s.label} class="h-[72px] w-[150px]" style="background:rgba(243,242,242,.08)" />
+				))
+			}
+		</div>
+	</section>
+
+	<SponsorRibbon />
 </Layout>
