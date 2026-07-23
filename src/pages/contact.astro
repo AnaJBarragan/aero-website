@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
 import ContactForm from '../components/ContactForm';
+
+import WideWorkshop from '@public/images/site/wide-workshop.webp';
 ---
 
 <Layout title="Contact Us — uOAeronautics">
@@ -24,7 +26,7 @@ import ContactForm from '../components/ContactForm';
 	<section class="mx-auto max-w-[1240px] px-6 pb-20 pt-2 md:px-10">
 		<div class="grid grid-cols-1 items-start gap-14 md:grid-cols-[0.9fr_1.1fr]">
 			<div class="grayscale">
-				<img src="/images/site/wide-workshop.webp" alt="Our workshop" class="aspect-4/5 w-full object-cover" />
+				<img src={WideWorkshop.src} alt="Our workshop" class="aspect-4/5 w-full object-cover" />
 			</div>
 			<ContactForm client:load />
 		</div>

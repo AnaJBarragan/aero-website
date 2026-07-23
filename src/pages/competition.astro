@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
+import { withBase } from '../lib/url';
+
+import Comp2025Teams from '@public/images/site/comp-2025-teams.webp';
+import Adv2026RenderFront from '@public/images/site/adv-2026-render-front.webp';
+import Micro2026SittingOnSnow from '@public/images/site/micro-2026-sitting-on-snow.webp';
+import MicroOnTheConcrete from '@public/images/site/micro-on-the-concrete.webp';
+import AdvGala from '@public/images/site/adv-gala.webp';
 
 const categories = [
 	{
@@ -19,10 +26,10 @@ const categories = [
 ];
 
 const pastDesigns = [
-	{ title: 'Advanced — 2026', name: 'Starling', href: '/aircraft', img: '/images/site/adv-2026-render-front.webp' },
-	{ title: 'Micro — 2026', name: 'SG32C', href: '/aircraft', img: '/images/site/micro-2026-sitting-on-snow.webp' },
-	{ title: 'Micro — 2025', name: 'UOAN-M25', href: '/aircraft', img: '/images/site/micro-on-the-concrete.webp' },
-	{ title: 'Advanced — 2025', name: 'Longshot', href: '/aircraft', img: '/images/site/adv-gala.webp' },
+	{ title: 'Advanced — 2026', name: 'Starling', href: '/aircraft', img: Adv2026RenderFront.src },
+	{ title: 'Micro — 2026', name: 'SG32C', href: '/aircraft', img: Micro2026SittingOnSnow.src },
+	{ title: 'Micro — 2025', name: 'UOAN-M25', href: '/aircraft', img: MicroOnTheConcrete.src },
+	{ title: 'Advanced — 2025', name: 'Longshot', href: '/aircraft', img: AdvGala.src },
 ];
 ---
 
@@ -31,7 +38,7 @@ const pastDesigns = [
 
 	<section class="relative flex min-h-[300px] items-center overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<img src="/images/site/comp-2025-teams.webp" alt="Many different Canadian teams attend the competitions" class="h-full w-full object-cover" />
+			<img src={Comp2025Teams.src} alt="Many different Canadian teams attend the competitions" class="h-full w-full object-cover" />
 		</div>
 		<div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(32,30,29,.9), rgba(32,30,29,.5))">
 		</div>
@@ -93,7 +100,7 @@ const pastDesigns = [
 						<img src={d.img} alt={`${d.title} — ${d.name}`} class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
 						<h3 class="m-0 text-lg">{d.title}</h3>
 						<p class="m-0 text-sm text-ink/60">{d.name}</p>
-						<a href={d.href} class="btn btn-secondary">Learn More</a>
+						<a href={withBase(d.href)} class="btn btn-secondary">Learn More</a>
 					</div>
 				))
 			}

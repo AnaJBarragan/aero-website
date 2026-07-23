@@ -4,6 +4,7 @@ import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
+import { publicImage } from '../lib/publicImages';
 
 function toCaption(filename: string) {
 	const base = filename.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
@@ -15,7 +16,7 @@ function loadAlbum(dir: string, urlBase: string) {
 	return fs
 		.readdirSync(full)
 		.sort()
-		.map((file) => ({ src: `${urlBase}/${file}`, caption: toCaption(file) }));
+		.map((file) => ({ src: publicImage(`${urlBase}/${file}`).src, caption: toCaption(file) }));
 }
 
 const albumDefs = [
@@ -43,14 +44,14 @@ const collage = [
 	'/images/aircraft/2025-micro/the-aircraft-ready-to-fly-on-the-competition-tarmac.jpg',
 	'/images/gallery/2025-09-26/the-plane-in-flight-as-seen-from-the-side.jpg',
 	'/images/gallery/2025-07-27/the-sea-duck-flying-close-to-the-ground.jpg',
-];
+].map((src) => publicImage(src).src);
 
 const highlights = [
 	{ src: '/images/aircraft/2026-micro/kaden-being-happy-with-the-current-state-of-sg32c.jpg', caption: 'Kaden with SG32C' },
 	{ src: '/images/aircraft/2026-advanced/testing-the-vtol-functionality-of-starling.jpg', caption: 'Testing Starling\'s VTOL functionality' },
 	{ src: '/images/site/adv-2025-longshot-glamour.webp', caption: 'Project Longshot' },
 	{ src: '/images/aircraft/2026-micro/showing-off-the-lightweight-carbon-fiber-propellors.jpg', caption: 'Carbon fibre propellers' },
-];
+].map((h) => ({ ...h, src: publicImage(h.src).src }));
 ---
 
 <Layout title="Gallery — uOAeronautics">

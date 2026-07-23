@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/url';
+
 interface Props {
 	active?: string;
 }
@@ -19,7 +21,7 @@ const links = [
 <nav
 	class="sticky top-0 z-50 flex items-center gap-7 border-b-2 border-divider bg-bg px-6 py-3 md:px-10"
 >
-	<a href="/" class="mr-auto flex items-center gap-2.5 text-ink no-underline">
+	<a href={withBase('/')} class="mr-auto flex items-center gap-2.5 text-ink no-underline">
 		<div
 			class="flex h-9 w-9 flex-none items-center justify-center bg-accent font-heading text-sm font-bold text-white"
 		>
@@ -31,7 +33,7 @@ const links = [
 		{
 			links.map((link) => (
 				<a
-					href={link.href}
+					href={withBase(link.href)}
 					class:list={[
 						'whitespace-nowrap border-b-[3px] pb-2 pt-1 font-heading text-sm no-underline',
 						link.key === active
@@ -59,7 +61,7 @@ const links = [
 			{
 				links.map((link) => (
 					<a
-						href={link.href}
+						href={withBase(link.href)}
 						class:list={[
 							'px-2 py-2 font-heading text-sm no-underline',
 							link.key === active ? 'font-extrabold text-accent-700' : 'font-semibold text-ink',

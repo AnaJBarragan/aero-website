@@ -2,6 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
+import { publicImage } from '../lib/publicImages';
+import { withBase } from '../lib/url';
+
+import WinterTeamPhoto from '@public/images/site/winter-team-photo.webp';
+import WideWorkshop from '@public/images/site/wide-workshop.webp';
+import AnaJBarragan from '@public/images/team/ana-j-barragan.webp';
+import Comp2025Teams from '@public/images/site/comp-2025-teams.webp';
+import Adv2026RenderFront from '@public/images/site/adv-2026-render-front.webp';
+import KadenSg32c from '@public/images/aircraft/2026-micro/kaden-being-happy-with-the-current-state-of-sg32c.jpg';
+import StemAtNight from '@public/images/site/stem-at-night.webp';
+import Micro2026SittingOnSnow from '@public/images/site/micro-2026-sitting-on-snow.webp';
+import MicroOnTheConcrete from '@public/images/site/micro-on-the-concrete.webp';
+import AdvGala from '@public/images/site/adv-gala.webp';
 
 const sections = [
 	{
@@ -11,7 +24,7 @@ const sections = [
 			'Who we are, where we started at the University of Ottawa, and what drives every design decision we make.',
 		cta: 'Meet the mission',
 		href: '/about',
-		img: '/images/site/wide-workshop.webp',
+		img: WideWorkshop.src,
 	},
 	{
 		num: '02',
@@ -19,7 +32,7 @@ const sections = [
 		blurb: 'The students behind the airframe — leads, members, and the disciplines that keep us flying.',
 		cta: 'Meet the team',
 		href: '/team',
-		img: '/images/team/ana-j-barragan.webp',
+		img: AnaJBarragan.src,
 	},
 	{
 		num: '03',
@@ -27,7 +40,7 @@ const sections = [
 		blurb: 'SAE Aero Design: the categories we fly, and the criteria we are judged on.',
 		cta: 'See the competition',
 		href: '/competition',
-		img: '/images/site/comp-2025-teams.webp',
+		img: Comp2025Teams.src,
 	},
 	{
 		num: '04',
@@ -35,7 +48,7 @@ const sections = [
 		blurb: 'Year over year airframes, stats, and the engineering behind each build.',
 		cta: 'View the aircraft',
 		href: '/aircraft',
-		img: '/images/site/adv-2026-render-front.webp',
+		img: Adv2026RenderFront.src,
 	},
 	{
 		num: '05',
@@ -43,7 +56,7 @@ const sections = [
 		blurb: 'Construction, testing, and competition day — in photos.',
 		cta: 'Open the gallery',
 		href: '/gallery',
-		img: '/images/aircraft/2026-micro/kaden-being-happy-with-the-current-state-of-sg32c.jpg',
+		img: KadenSg32c.src,
 	},
 	{
 		num: '06',
@@ -51,7 +64,7 @@ const sections = [
 		blurb: 'Want to fly with us? Reach out — we are always recruiting.',
 		cta: 'Get in touch',
 		href: '/contact',
-		img: '/images/site/stem-at-night.webp',
+		img: StemAtNight.src,
 	},
 ];
 
@@ -70,7 +83,7 @@ const sponsors = [
 
 	<section class="relative flex min-h-[620px] items-end overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<img src="/images/site/winter-team-photo.webp" alt="Team photo before a test-flight" class="h-full w-full object-cover" />
+			<img src={WinterTeamPhoto.src} alt="Team photo before a test-flight" class="h-full w-full object-cover" />
 		</div>
 		<div
 			class="absolute inset-0"
@@ -89,7 +102,7 @@ const sponsors = [
 				Class and the Micro Class.
 			</p>
 			<div class="flex flex-wrap gap-3.5">
-				<a href="/team" class="btn btn-primary">Meet the Team</a>
+				<a href={withBase('/team')} class="btn btn-primary">Meet the Team</a>
 				<a href="https://forms.cloud.microsoft/r/5zeg93ke8z" class="btn btn-secondary" style="border-color:rgba(243,242,242,.55);color:#fff"
 					>Join Us</a
 				>
@@ -116,7 +129,7 @@ const sponsors = [
 						</div>
 						<h2 class="mb-3.5">{item.title}</h2>
 						<p class="mb-6 max-w-[52ch] text-base text-ink/60">{item.blurb}</p>
-						<a href={item.href} class="btn btn-primary">
+						<a href={withBase(item.href)} class="btn btn-primary">
 							{item.cta} &rarr;
 						</a>
 					</div>
@@ -130,24 +143,24 @@ const sponsors = [
 		<h2 class="mb-7">Our aircraft, year over year</h2>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6">
 			<div class="card gap-3 p-5 shadow-sm">
-				<img src="/images/site/adv-2026-render-front.webp" alt="Advanced 2026 — Starling" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<img src={Adv2026RenderFront.src} alt="Advanced 2026 — Starling" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
 				<h3 class="m-0 text-lg">Advanced &mdash; 2026</h3>
-				<a href="/competition" class="btn btn-secondary">Learn More</a>
+				<a href={withBase('/competition')} class="btn btn-secondary">Learn More</a>
 			</div>
 			<div class="card gap-3 p-5 shadow-sm">
-				<img src="/images/site/micro-2026-sitting-on-snow.webp" alt="Micro 2026 — SG32C" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<img src={Micro2026SittingOnSnow.src} alt="Micro 2026 — SG32C" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
 				<h3 class="m-0 text-lg">Micro &mdash; 2026</h3>
-				<a href="/competition" class="btn btn-secondary">Learn More</a>
+				<a href={withBase('/competition')} class="btn btn-secondary">Learn More</a>
 			</div>
 			<div class="card gap-3 p-5 shadow-sm">
-				<img src="/images/site/micro-on-the-concrete.webp" alt="Micro 2025 — UOAN-M25" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<img src={MicroOnTheConcrete.src} alt="Micro 2025 — UOAN-M25" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
 				<h3 class="m-0 text-lg">Micro &mdash; 2025</h3>
-				<a href="/competition" class="btn btn-secondary">Learn More</a>
+				<a href={withBase('/competition')} class="btn btn-secondary">Learn More</a>
 			</div>
 			<div class="card gap-3 p-5 shadow-sm">
-				<img src="/images/site/adv-gala.webp" alt="Advanced 2025 — Longshot" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
+				<img src={AdvGala.src} alt="Advanced 2025 — Longshot" class="aspect-4/3 w-full object-cover" style="border-radius:5px" />
 				<h3 class="m-0 text-lg">Advanced &mdash; 2025</h3>
-				<a href="/competition" class="btn btn-secondary">Learn More</a>
+				<a href={withBase('/competition')} class="btn btn-secondary">Learn More</a>
 			</div>
 		</div>
 	</section>
@@ -162,7 +175,7 @@ const sponsors = [
 					team. Interested in partnering with us?
 				</p>
 			</div>
-			<a href="/partner" class="btn btn-secondary flex-none" style="border-color:rgba(243,242,242,.55);color:#fff"
+			<a href={withBase('/partner')} class="btn btn-secondary flex-none" style="border-color:rgba(243,242,242,.55);color:#fff"
 				>Want to sponsor us? &rarr;</a
 			>
 		</div>
@@ -170,7 +183,7 @@ const sponsors = [
 			{
 				sponsors.map((s) => (
 					<a href={s.href} class="flex h-[64px] w-[144px] items-center justify-center bg-white p-3" title={s.name}>
-						<img src={`/images/sponsors/${s.logo}`} alt={`${s.name} logo`} class="max-h-full max-w-full" />
+						<img src={publicImage(`/images/sponsors/${s.logo}`).src} alt={`${s.name} logo`} class="max-h-full max-w-full" />
 					</a>
 				))
 			}

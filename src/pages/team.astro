@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
 import SponsorRibbon from '../components/SponsorRibbon.astro';
+import { publicImage } from '../lib/publicImages';
+
+import WinterTeamPhoto from '@public/images/site/winter-team-photo.webp';
 
 const rawMembers = [
 	{
@@ -104,6 +107,7 @@ const members = rawMembers.map((m, i) => {
 		id,
 		anchor: `#${id}`,
 		mailto: `mailto:${m.email}`,
+		photoSrc: publicImage(`/images/team/${m.photo}`).src,
 		reverse: i % 2 !== 0,
 		bg: i % 2 === 0 ? 'bg-bg' : 'bg-surface',
 	};
@@ -115,7 +119,7 @@ const members = rawMembers.map((m, i) => {
 
 	<section class="relative flex min-h-[300px] items-center overflow-hidden">
 		<div class="absolute inset-0 grayscale">
-			<img src="/images/site/winter-team-photo.webp" alt="Team photo before a test-flight" class="h-full w-full object-cover" />
+			<img src={WinterTeamPhoto.src} alt="Team photo before a test-flight" class="h-full w-full object-cover" />
 		</div>
 		<div class="absolute inset-0" style="background:linear-gradient(100deg, rgba(32,30,29,.9), rgba(32,30,29,.5))">
 		</div>
@@ -136,7 +140,7 @@ const members = rawMembers.map((m, i) => {
 				members.map((m) => (
 					<a href={m.anchor} class="block text-center text-inherit no-underline">
 						<div class="aspect-square w-full overflow-hidden rounded-full grayscale">
-							<img src={`/images/team/${m.photo}`} alt={m.name} class="h-full w-full object-cover" />
+							<img src={m.photoSrc} alt={m.name} class="h-full w-full object-cover" />
 						</div>
 						<p class="mb-0.5 mt-2.5 font-heading text-[13px] font-bold">{m.name}</p>
 						<p class="m-0 text-[11px] text-ink/60">{m.role}</p>
@@ -158,7 +162,7 @@ const members = rawMembers.map((m, i) => {
 					]}
 				>
 					<div class="grayscale w-full min-w-[240px] max-w-[380px] flex-1 basis-[320px]">
-						<img src={`/images/team/${m.photo}`} alt={m.name} class="aspect-[3/4] w-full object-cover" />
+						<img src={m.photoSrc} alt={m.name} class="aspect-[3/4] w-full object-cover" />
 					</div>
 					<div class="min-w-[280px] flex-[2_1_420px]">
 						<h6 class="text-accent">{m.subteam}</h6>

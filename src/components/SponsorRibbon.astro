@@ -1,4 +1,7 @@
 ---
+import { publicImage } from '../lib/publicImages';
+import { withBase } from '../lib/url';
+
 const sponsors = [
 	{ name: 'DuPont', logo: 'dupont.svg', href: 'https://www.dupont.ca/' },
 	{ name: 'HTS', logo: 'hts.svg', href: 'https://www.hts.com/' },
@@ -21,7 +24,7 @@ const sponsors = [
 	<div class="mx-auto max-w-[1240px]">
 		<div class="mb-4.5 flex flex-wrap items-baseline justify-between gap-4">
 			<h6 class="m-0 text-accent-700">Our Partners</h6>
-			<a href="/partner" class="text-sm font-semibold text-accent no-underline hover:underline"
+			<a href={withBase('/partner')} class="text-sm font-semibold text-accent no-underline hover:underline"
 				>Want to sponsor us? &rarr;</a
 			>
 		</div>
@@ -29,7 +32,7 @@ const sponsors = [
 			{
 				sponsors.map((s) => (
 					<a href={s.href} title={s.name} class="flex h-[56px] w-[130px] items-center justify-center">
-						<img src={`/images/sponsors/${s.logo}`} alt={`${s.name} logo`} class="max-h-full max-w-full" />
+						<img src={publicImage(`/images/sponsors/${s.logo}`).src} alt={`${s.name} logo`} class="max-h-full max-w-full" />
 					</a>
 				))
 			}

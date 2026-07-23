@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+import Adv2026RenderFront from '@public/images/site/adv-2026-render-front.webp';
+import Micro2026SittingOnSnow from '@public/images/site/micro-2026-sitting-on-snow.webp';
+import Adv2025LongshotGlamour from '@public/images/site/adv-2025-longshot-glamour.webp';
+import MicroOnTheConcrete from '@public/images/site/micro-on-the-concrete.webp';
+
 interface Stat {
 	label: string;
 	value: string;
@@ -28,7 +33,7 @@ const years: YearGroup[] = [
 				name: 'Starling',
 				category: 'Advanced Class',
 				desc: 'A hybrid fixed-wing platform with vertical takeoff capability for autonomous aerial missions — the next iteration of our previous platform, Project Longshot. Starling uses a fixed-wing tilt-rotor tri-copter configuration for stable forward flight with controlled VTOL transitions.',
-				img: '/images/site/adv-2026-render-front.webp',
+				img: Adv2026RenderFront.src,
 				stats: [
 					{ label: 'Configuration', value: 'Tilt-rotor tri-copter VTOL' },
 					{ label: 'Structure', value: '3D-printed skin, wood fuselage' },
@@ -40,7 +45,7 @@ const years: YearGroup[] = [
 				name: 'SG32C',
 				category: 'Micro Class',
 				desc: 'Officially "Sneaky Golem 3.2 Cycle" — a high-lift payload aircraft built around a lightweight twin-boom taildragger configuration, optimized for short takeoff and maximum payload capacity. Placed 6th Overall and 3rd in Technical Presentation at SAE Aero Design East.',
-				img: '/images/site/micro-2026-sitting-on-snow.webp',
+				img: Micro2026SittingOnSnow.src,
 				stats: [
 					{ label: 'Configuration', value: 'High-wing twin-boom taildragger' },
 					{ label: 'Airfoil', value: 'CH10' },
@@ -58,7 +63,7 @@ const years: YearGroup[] = [
 				name: 'Longshot',
 				category: 'Advanced Class',
 				desc: 'Designed for autonomous payload delivery and capture via VTOL and conventional flight. Built around a carbon fibre rod and 3D-printed spline frame with a fully 3D-printed wing, powered by three T-Motor MN2806 units with vectored front motors for vertical lift.',
-				img: '/images/site/adv-2025-longshot-glamour.webp',
+				img: Adv2025LongshotGlamour.src,
 				stats: [
 					{ label: 'Wingspan', value: '1.2 m' },
 					{ label: 'Length', value: '0.97 m' },
@@ -70,7 +75,7 @@ const years: YearGroup[] = [
 				name: 'UOAN-M25',
 				category: 'Micro Class',
 				desc: 'A lightweight, modular platform built for performance and rapid assembly, featuring a cropped delta wing and T-tail layout. The airframe is a carbon fibre skeleton housed in a CNC-machined EPS foam body, powered by an E-flite Power 10 motor.',
-				img: '/images/site/micro-on-the-concrete.webp',
+				img: MicroOnTheConcrete.src,
 				stats: [
 					{ label: 'Wingspan', value: '1.0 m' },
 					{ label: 'Length', value: '1.2 m' },
